@@ -7,7 +7,7 @@ function add_nurse($first_name, $last_name) {
     $stmt->bind_param("ss", $first_name, $last_name);
 
     if ($stmt->execute()) {
-        return true;
+        return $conn->insert_id; // Return the ID of the newly created nurse
     } else {
         return false;
     }

@@ -35,15 +35,24 @@ function list_all_documents_controller() {
                 <input type="text" name="note" id="note" value="' . ($document['note'] ?? '') . '">
                 <br>
                 <button type="submit" name="update_document_status">Update Status</button>
+                <button type="submit" name="delete_document" style="background-color: red;">Delete</button>
               </form>';
     }
 }
 
 function update_document_status_controller($id, $status, $note) {
     if(update_document_status($id, $status, $note)) {
-        echo "Document status updated successfully.";
+       
     } else {
         echo "Failed to update document status.";
+    }
+}
+
+function delete_document_controller($id) {
+    if(delete_document($id)) {
+        echo "Document deleted successfully.";
+    } else {
+        echo "Failed to delete document.";
     }
 }
 

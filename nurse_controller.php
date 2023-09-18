@@ -2,10 +2,13 @@
 include 'nurse_model.php';
 
 function add_nurse_controller($first_name, $last_name) {
-    if(add_nurse($first_name, $last_name)) {
-        echo "Nurse added successfully.";
+    $nurse_id = add_nurse($first_name, $last_name);
+    if($nurse_id) {
+        echo "Nurse added successfully with ID: $nurse_id";
+        return $nurse_id;
     } else {
         echo "Failed to add nurse.";
+        return false;
     }
 }
 

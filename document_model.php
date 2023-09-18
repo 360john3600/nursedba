@@ -53,4 +53,16 @@ function update_document_status($id, $status, $note) {
         return false;
     }
 }
+
+function delete_document($id) {
+    global $conn;
+    $stmt = $conn->prepare("DELETE FROM documents WHERE id = ?");
+    $stmt->bind_param("i", $id);
+
+    if ($stmt->execute()) {
+        return true;
+    } else {
+        return false;
+    }
+}
 ?>
